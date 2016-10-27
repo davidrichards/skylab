@@ -12,8 +12,9 @@ config :logger, level: :warn
 # Configure your database
 config :skylab, Skylab.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("DATABASE_USERNAME"),
+  password: System.get_env("DATABASE_PASSWORD"),
   database: "skylab_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+  hostname: System.get_env("DATABASE_HOST"),
+  pool: Ecto.Adapters.SQL.Sandbox,
+  port: System.get_env("DATABASE_PORT") || 5432

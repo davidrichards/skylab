@@ -23,7 +23,10 @@ This creates a generic-enough schema that allows us to exercise a few ideas.
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
+  * Copy example.env to .env and adjust your database settings
+  * Export your .env: `export $(cat .env | xargs)`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
+  * Load seed data: `mix run priv/repo/seeds.exs`
   * Install Node.js dependencies with `npm install`
   * Start Phoenix endpoint with `mix phoenix.server`
 
