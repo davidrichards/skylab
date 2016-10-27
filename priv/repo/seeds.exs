@@ -17,7 +17,9 @@ defmodule Skylab.DataBuilder do
     )
   end
 
-  def assign_person(organization, name, age) do
+  def assign_person(organization, age) do
+    title = random_title
+    name = random_first_name
     person = Skylab.Repo.insert!(
       %Skylab.Person{
         name: name,
@@ -25,7 +27,11 @@ defmodule Skylab.DataBuilder do
       }
     )
     Skylab.Repo.insert!(
-      %Skylab.Position{organization_id: organization.id, person_id: person.id}
+      %Skylab.Position{
+        organization_id: organization.id,
+        person_id: person.id,
+        title: title
+      }
     )
     person
   end
@@ -36,11 +42,15 @@ defmodule Skylab.DataBuilder do
       Ethan Mia James Abigail Alexander Emily Michael Charlotte Benjamin Harper
     )
   end
+
+  def random_title do
+    Enum.random ~w(Developer Designer Manager Assistant)
+  end
 end
 
 Enum.each(~w(ACME Globex Soylent), fn(name) ->
   organization = Skylab.DataBuilder.create_organization(name)
   Enum.each(1..4, fn(i) ->
-    Skylab.DataBuilder.assign_person(organization, Skylab.DataBuilder.random_first_name, i * 10)
+    Skylab.DataBuilder.assign_person(organization, i * 10)
   end)
 end)

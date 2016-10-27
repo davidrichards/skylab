@@ -19,7 +19,7 @@ defmodule Skylab.Mixfile do
   def application do
     [mod: {Skylab, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :absinthe_relay, :absinthe_plug]]
+                    :phoenix_ecto, :postgrex, :absinthe_relay, :absinthe_plug, :timex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -41,7 +41,10 @@ defmodule Skylab.Mixfile do
      {:absinthe, "~> 1.1.8"},
      {:absinthe_plug, "~> 1.1"},
      {:absinthe_relay, "~> 0.9.2"},
-     {:poison, "~> 2.0"}]
+     {:poison, "~> 2.0"},
+     {:timex, "~> 3.0"},
+     {:timex_ecto, "~> 3.0"},
+]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
