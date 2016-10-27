@@ -24,6 +24,7 @@ defmodule Skylab.Schema.Types do
   node object :person do
     field :name, :string
     field :age, :integer
+
     connection field :positions, node_type: :position do
       arg :search, :string
       resolve &Position.all/2
@@ -49,5 +50,4 @@ defmodule Skylab.Schema.Types do
   end
 
   connection node_type: :position
-
 end
