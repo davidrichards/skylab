@@ -3,8 +3,6 @@ defmodule Skylab.Resolver.Position do
   alias Ecto.DateTime
   alias Skylab.{Organization, Person, Position, Repo}
   import Ecto.Query
-  # import Skylab.Absinthe
-  # use OkJose
 
   @moduledoc """
   Resolver for the Position resource
